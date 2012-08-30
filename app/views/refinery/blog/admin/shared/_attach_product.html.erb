@@ -1,0 +1,69 @@
+<% content_for :stylesheets, stylesheet_link_tag('refinery/blog/blog_spree_products') %>
+<% content_for :javascripts, javascript_include_tag('refinery/blog/blog_spree_products') %>
+
+<div id="attach-product" class="right_side hemisquare">
+  <%= f.hidden_field :product_id %>
+  <a type="button" id="to-attach" href="#"><%= t('attach_product', :scope => 'refinery.blog.admin.posts.products') %></a>
+
+
+  <ul id='selected-product'>
+    <li class="<%= @post.product_id ? "show" : "hide" %>">
+      <% if @post.product_id %>
+        <%= image_tag @post.product.images.first.small_url %>
+        <%= @post.product.name %>
+      <% end %>
+    </li>
+  </ul>
+
+
+  
+
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery('a#to-attach').click(function(e){
+        e.preventDefault();
+        ResponsiveModalDialog({
+          modal_window : 'blog-products-search',
+          window_position: 'absolute'
+        });      
+      });
+
+      jQuery('ul.list-latest-products li img').click(function(){
+        jQuery('input[name="post[product_id]"]').val(jQuery(this).attr('id'));
+        product_info = (jQuery(this).parents(0).html());
+        jQuery('ul#selected-product li').html(product_info).removeClass('hide').addClass('show');
+        jQuery('p.dialog-close a').trigger('click');
+      });
+
+      jQuery('ul#selected-product img').click(function(){
+        jQuery('ul#selected-product li').html('').removeClass('show').addClass('hide');
+        jQuery('input[name="post[product_id]"]').val('');
+      });
+
+    });
+  </script>
+
+  <div id="blog-products-search">
+
+    <h2 class="latest-products">
+      <%= t('latest_products', :scope => 'refinery.blog.admin.posts.products') %>
+    </h2>
+      <p class="tip-subtle"><%= t('click_to_select', :scope => 'refinery.blog.admin.posts.products') %></p>
+
+      <ul class="list-latest-products">
+        <%
+        latest_10products = Spree::Product.find(:all, :limit => 10, :order => 'updated_at desc')
+        latest_10products.each do |product| %>
+          <li>
+            <%= image_tag product.images.first.small_url, :id => product.id %>
+            <%= product.name %>
+          </li>
+        <% end %>
+      </ul>
+  
+      <a id="search-products" href="#"><%= t('search_products', :scope => 'refinery.blog.admin.posts.products') %></a>
+    
+  </div>
+
+</div>
+

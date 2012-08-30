@@ -1,0 +1,11 @@
+en:
+  refinery:
+    blog:
+      admin:
+        posts:
+          products:
+            attach_product: Attach (or change) a product
+            select_and_attach_a_product: Select and attach a product
+            latest_products: Latest products
+            search_products: Search Products
+            click_to_select: Click to select

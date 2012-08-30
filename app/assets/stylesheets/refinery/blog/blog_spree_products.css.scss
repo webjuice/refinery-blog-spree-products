@@ -1,0 +1,57 @@
+/*
+ *= require_self
+ *= require_tree .
+*/
+
+.tip-subtle {
+  color: #DDDDDD;
+}
+
+div#attach-product {
+
+  ul.list-latest-products, ul#selected-product {
+    margin:0;
+    padding:0;
+    display:block;
+
+    li {
+      list-style:none;
+      display:inline-block;
+      width:100px;
+      height:150px;
+      float:left;
+      padding:0.6em;
+      margin:0.7em;
+      text-align:center;
+      color:#BBBBBB;
+      font-size:0.9em;
+      border:1px #DDDDDD solid;
+
+      &:hover {
+        border-color:#CC0000;
+        color:#000000;
+      }
+
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+
+  a#search-products {
+    display:block;
+    float:left;
+    clear:both;
+    margin-top:2em;
+    color:#BBBBBB;
+  }
+
+  ul#selected-product {
+    li {
+      margin:2em 0 0 0;
+    }
+
+    li.show {display:visible;}
+    li.hide {display:none;}
+  }
+}
