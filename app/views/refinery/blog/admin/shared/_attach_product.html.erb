@@ -3,7 +3,7 @@
 
 <div id="attach-product" class="right_side hemisquare">
   <%= f.hidden_field :product_id %>
-  <a type="button" id="to-attach" href="#"><%= t('attach_product', :scope => 'refinery.blog.admin.posts.products') %></a>
+  <a type="button" id="to-attach" href="#"><%= t('refinery.blog.admin.posts.products.attach_product') %></a>
 
 
   <ul id='selected-product'>
@@ -46,9 +46,9 @@
   <div id="blog-products-search">
 
     <h2 class="latest-products">
-      <%= t('latest_products', :scope => 'refinery.blog.admin.posts.products') %>
+      <%= t('refinery.blog.admin.posts.products.latest_products') %>
     </h2>
-      <p class="tip-subtle"><%= t('click_to_select', :scope => 'refinery.blog.admin.posts.products') %></p>
+      <p class="tip-subtle"><%= t('refinery.blog.admin.posts.products.click_to_select') %></p>
 
       <ul class="list-latest-products">
         <%
@@ -61,7 +61,7 @@
         <% end %>
       </ul>
   
-      <a id="search-products" href="#"><%= t('search_products', :scope => 'refinery.blog.admin.posts.products') %></a>
+      <a id="search-products" href="#"><%= t('refinery.blog.admin.posts.products.search_products') %></a>
     
   </div>
 
